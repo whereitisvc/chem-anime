@@ -10,3 +10,9 @@ export const MENU = {
     REACTS: "REACTS",
     DESCRIPTION: "DESCRIPTION"
 }
+
+export const CONTROLLER = {
+    SOLID: "SOLID",
+    LIQUID: "LIQUID",
+    GAS: "GAS"
+}

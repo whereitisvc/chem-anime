@@ -1,25 +1,12 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-// import './App.css';
-
-import { TimelineLite, TimelineMax, TweenLite, Expo, Power0 } from 'gsap'
-
-// import ScrollArea from 'react-scrollbar'
-// import { ScrollTo, ScrollArea } from "react-scroll-to";
-// import ScrollArea from 'react-scrollarea/src/js/ScrollAreaWithoutCss';
-
-// import 'react-perfect-scrollbar/dist/css/styles.css';
-// import PerfectScrollbar from 'react-perfect-scrollbar';
-
-// import ScrollArea from '@xico2k/react-scroll-area';
-
 import 'semantic-ui-css/semantic.min.css'
-import { Grid, Button } from 'semantic-ui-react'
+import './App.css'
 
-import Beaker from './components/beaker-component'
-import Menu from './components/menu-component'
-import HighLight from './components/highlight-component'
+import Canvas from './components/canvas.component'
 import Controller from './components/controller-component'
+import Selector from './components/selector-component'
+import Sheet from './components/sheet-component'
+import Menu from './components/menu-component'
 
 // React-Redux
 import { Provider } from "react-redux"
@@ -35,22 +22,28 @@ class App extends Component {
         <Provider store={store}>
         <div 
           className="App" 
-          style={{ 
-            backgroundColor: "#282c34", 
-            height: "100vh",
-            textAlign: "center",
-            paddingTop: 50
-          }}
         >
 
-          <Beaker />
+          <Sheet />
 
-          {/* <Menu /> */}
-          
-          {/* <HighLight /> */}
+          <div
+            style={{
+              // background: 'white',
+              position: 'relative',
+              width: '60vw',
+              height: '90vh',
+              maxWidth: 850,
+              margin: 'auto'
+            }}
+          >
+            <Canvas />
+            <Controller />
+            <Selector />
+          </div>
 
-          <Controller />
+        </div>
 
+        <div className="collection">
         </div>
         </Provider>
     )

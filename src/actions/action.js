@@ -1,9 +1,10 @@
-import { SET_HIGHLIGHT, SET_ANIMA_SETTING, PUSH_ITEMS_STACK, CLEAR_ITEMS_STACK, SET_SCROLL, SCROLL_TO, SET_RESET_BEAKER, SET_DO_REACT, INC_STACK_IDX, SET_RESET_HIGHLIGHT, CLEAR_REACT } from "./type.action"
+import { SET_HIGHLIGHT, SET_ANIMA_SETTING, PUSH_ITEMS_STACK, CLEAR_ITEMS_STACK, SET_SCROLL, SCROLL_TO, SET_RESET_BEAKER, SET_DO_REACT, INC_STACK_IDX, SET_RESET_HIGHLIGHT, CLEAR_REACT, SET_CONTROLLER, SET_EXPAND, SHOW_DETAILS } from "./type.action"
 
 export const selectReact = (react) => dispatch => {
-    const { input } = react;
+    const { input, animation } = react;
     if (!input) return;
     let delay = 0;
+    let interval = animation.flame ? 2700 : 2700;
     input.forEach(item => {
         setTimeout(() => {
             dispatch({
@@ -11,7 +12,7 @@ export const selectReact = (react) => dispatch => {
                 payload: item
             });
         }, delay);
-        delay += 2000;
+        delay += interval;
     })
 }
 
@@ -72,5 +73,26 @@ export const setReact = (active) => dispatch => {
 export const clearReact = () => dispatch => {
     dispatch({
         type: CLEAR_REACT
+    })
+}
+
+export const setController = (tab) => dispatch => {
+    dispatch({
+        type: SET_CONTROLLER,
+        payload: tab
+    })
+}
+
+export const setExpand = (active) => dispatch => {
+    dispatch({
+        type: SET_EXPAND,
+        payload: active
+    })
+}
+
+export const showDetails = (active) => dispatch => {
+    dispatch({
+        type: SHOW_DETAILS,
+        payload: active
     })
 }

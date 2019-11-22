@@ -1,0 +1,34 @@
+
+.default {
+    fill: none;
+}
+
+.forhover {
+    fill: transparent;
+    /* fill: rebeccapurple; */
+    opacity: 0.5;
+}
+
+.forhover:hover {
+    cursor: pointer;
+    stroke: rgb(255, 255, 255);
+    stroke-linejoin: round;
+    stroke-opacity: 0.1;
+    stroke-width: 5px;
+    /* fill: blue; */
+}
+
+.leftarrow {
+    /* background: pink; */
+    position: absolute;
+    left: -55px;
+    bottom: 150px;
+    color: rgb(180, 180, 180);
+    opacity: .5;
+}
+
+.hide {
+    opacity: 0;
+}
+
+

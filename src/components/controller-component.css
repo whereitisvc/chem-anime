@@ -1,0 +1,24 @@
+.tab-box {
+    position: relative;
+}
+.mytab{
+    background: none;
+    color: #D5D8DC;
+    width: 70px
+}
+.mytab:after {    
+  background: none repeat scroll 0 0 transparent;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  bottom: 0;
+  position: absolute;
+  background: rgb(199, 199, 199);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.mytab:hover:after { 
+  width: 100%; 
+  left: 0; 
+}

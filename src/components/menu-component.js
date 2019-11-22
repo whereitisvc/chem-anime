@@ -29,27 +29,6 @@ class Menu extends Component {
         this.props.selectReact(react);
     }
 
-    itemonClick(item) {
-        if (this.props.reaction) return;
-        if (this.props.stack.length >= 3) return;
-        this.props.selectItem(item);
-    }
-
-    componentDidUpdate() {
-        const { do_scroll, scroll_to } = this.props;
-        if (do_scroll) {
-            let pos = 0;
-            switch(scroll_to) {
-                case MENU.DESCRIPTION:
-                    pos = this.description.getBoundingClientRect().top - this.menu.getBoundingClientRect().top - 10;
-                    break;
-                default:
-            }
-            this.scroll.scrollTo({ top: pos, left: 0, behavior: 'smooth' });
-            this.props.setScroll(false);
-        }
-    }
-
     itemButton(item) {
         return (
             <Button
@@ -71,106 +50,13 @@ class Menu extends Component {
     render(){
         const react_font_size = 16;
         return (
-            <PerfectScrollbar
-                containerRef={el => this.scroll = el}
+            <div 
                 style={{
-                    position: "absolute",
-                    top: "20vh",
-                    left: "22vw",
-                    width: '30vw',
-                    height: "62vh"
+                    background: 'white',
+                    height: '100vh'
                 }}
-            >
-
-            <div ref={el => this.menu = el} style={{ width: '25vw', }}>
-                
-                <Header size='large' style={{ color: "white" }}>Solid</Header>
-                {
-                    [Items.Fe, Items.CuO, Items.CaCO3, Items.NaHCO3]
-                        .map((item, idx) => this.itemButton(item))
-                }
-
-                <Header size='large' style={{ color: "white" }}>Liquid & Aqueous Solution</Header>
-                {
-                    [Items.H2SO4, Items.HCl, Items.HBr, Items.PbNO32, Items.NaI, Items.NaCl, Items.AgNO3]
-                        .map((item, idx) => this.itemButton(item))
-                }
-                
-
-                <br />
-                <br />
-                <Divider />
-                
-
-                <Header size='large' color='teal'>Color Change</Header>
-                { clrchg_list.map(react => (
-                    <div style={{ marginBottom: 5 }}>
-                    <Button 
-                        style={{ background: "none", color: "#DCDCDC", fontSize: react_font_size, paddingLeft: 0 }}
-                        key={react.name}
-                        onClick={() => this.reactOnClick(react)}
-                    >
-                        {react.equation}
-                    </Button>
-                    </div>
-                )) }
-
-                
-                    
-                <Header size='large' color='teal'>Gas Bubble</Header>
-                { bubble_list.map(react => (
-                    <div style={{ marginBottom: 5 }}>
-                    <Button 
-                        style={{ background: "none", color: "#DCDCDC", fontSize: react_font_size, paddingLeft: 0 }}
-                        key={react.name}
-                        onClick={() => this.reactOnClick(react)}
-                    >
-                        {react.equation}
-                    </Button>
-                    </div>
-                )) }
-
-                
-                    
-                <Header size='large' color='teal'>Gas Bubble</Header>
-                { bubble_list.map(react => (
-                    <div style={{ marginBottom: 5 }}>
-                    <Button 
-                        style={{ background: "none", color: "#DCDCDC", fontSize: react_font_size, paddingLeft: 0 }}
-                        key={react.name}
-                        onClick={() => this.reactOnClick(react)}
-                    >
-                        {react.equation}
-                    </Button>
-                    </div>
-                )) }
-
-                
-                
-                <Header size='large' color='teal'>Color Change</Header>
-                { clrchg_list.map(react => (
-                    <div style={{ marginBottom: 5 }}>
-                    <Button 
-                        style={{ background: "none", color: "#DCDCDC", fontSize: react_font_size, paddingLeft: 0 }}
-                        key={react.name}
-                        onClick={() => this.reactOnClick(react)}
-                    >
-                        {react.equation}
-                    </Button>
-                    </div>
-                )) }
-
-                
-                <br />
-                <Divider />
-                <br />
-
-                <div ref={el => this.description = el}>
-                    <Description />
-                </div>
-
+            > 
             </div>
-            </PerfectScrollbar>
         )
     }
 }

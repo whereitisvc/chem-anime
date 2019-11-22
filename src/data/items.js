@@ -96,7 +96,7 @@ export const PbNO32 = {
     display: <span>Pb(NO<sub>3</sub>)<sub>2</sub></span>,
     animation: {
         type: EPISODE.ADD_LIQUID,
-        color: "#F2F4F4",
+        color: "#EAEDED",
         txt: "black"
     }
 }
@@ -105,7 +105,7 @@ export const NaI = {
     display: <span>NaI</span>,
     animation: {
         type: EPISODE.ADD_LIQUID,
-        color: "#E5E8E8",
+        color: "#EAEDED",
         txt: "black"
     }
 }
@@ -122,7 +122,7 @@ export const NaCl = {
     display: <span>NaCl</span>,
     animation: {
         type: EPISODE.ADD_LIQUID,
-        color: "#EAEDED",
+        color: "#808B96",
         txt: "black"
     }
 }
@@ -131,7 +131,7 @@ export const AgNO3 = {
     display: <span>AgNO3</span>,
     animation: {
         type: EPISODE.ADD_LIQUID,
-        color: "#EAEDED",
+        color: "#808B96",
         txt: "black"
     }
 }
@@ -141,13 +141,141 @@ export const AgCl = {
 }
 export const CH4 = {
     id: "CH4",
-    display: <span>CH4</span>
+    display: <span>CH<sub>4</sub></span>,
+    animation: {
+        type: EPISODE.ADD_GAS,
+        color: "#EB984E"
+    }
 }
 export const O2 = {
     id: "O2",
-    display: <span>O<sub>2</sub></span>
+    display: <span>O<sub>2</sub></span>,
+    animation: {
+        type: EPISODE.ADD_GAS,
+        color: "#AEB6BF"
+    }
 }
 export const C3H8 = {
     id: "C3H8",
-    display: <span>C<sub>3</sub>H<sub>8</sub></span>
+    display: <span>C<sub>3</sub>H<sub>8</sub></span>,
+    animation: {
+        type: EPISODE.ADD_GAS,
+        color: "#D35400"
+    }
+}
+
+export const Fe2O3 = {
+    id: "Fe2O3",
+    display: <span>Fe<sub>2</sub>O<sub>3</sub></span>,
+    animation: {
+        type: EPISODE.ADD_SOLID,
+        color: "#9C640C"
+    }
+}
+
+export const FeCl3 = {
+    id: "FeCl3",
+    display: <span>FeCl<sub>3</sub></span>
+}
+
+export const Fe2SO43 = {
+    id: "Fe2SO43",
+    display: <span>Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></span>
+}
+
+export const CuCO3 = {
+    id: "CuCO3",
+    display: <span>CuCO<sub>3</sub></span>,
+    animation: {
+        type: EPISODE.ADD_SOLID,
+        color: "#58D68D"
+    }
+}
+
+export const HNO3 = {
+    id: "HNO3",
+    display: <span>HNO<sub>3</sub></span>,
+    animation: {
+        type: EPISODE.ADD_LIQUID,
+        color: "#F8C471"
+    }
+}
+
+export const CuNO32 = {
+    id: "CuNO32",
+    display: <span>Cu(NO<sub>3</sub>)<sub>2</sub></span>
+}
+
+export const CuCl2 = {
+    id: "CuCl2",
+    display: <span>CuCl<sub>2</sub></span>
+}
+
+export const CdSO4 = {
+    id: "CdSO4",
+    display: <span>CdSO<sub>4</sub></span>,
+    animation: {
+        type: EPISODE.ADD_LIQUID,
+        color: "#717D7E"
+    }
+}
+
+export const K2S = {
+    id: "K2S",
+    display: <span>K<sub>2</sub>S</span>,
+    animation: {
+        type: EPISODE.ADD_LIQUID,
+        color: "#717D7E"
+    }
+}
+
+export const CdS = {
+    id: "CdS",
+    display: <span>CdS</span>
+}
+
+export const K2SO4 = {
+    id: "K2SO4",
+    display: <span>K<sub>2</sub>SO<sub>4</sub></span>
+}
+
+export const MgCl2 = {
+    id: "MgCl2",
+    display: <span>MgCl<sub>2</sub></span>,
+    animation: {
+        type: EPISODE.ADD_LIQUID,
+        color: "#717D7E"
+    }
+}
+
+export const NaOH = {
+    id: "NaOH",
+    display: <span>NaOH</span>,
+    animation: {
+        type: EPISODE.ADD_LIQUID,
+        color: "#E5E8E8"
+    }
+}
+
+export const MgOH2 = {
+    id: "MgOH2",
+    display: <span>Mg(OH)<sub>2</sub></span>
+}
+
+export const C4H10 = {
+    id: "C4H10",
+    display: <span>C<sub>4</sub>H<sub>10</sub></span>,
+    animation: {
+        type: EPISODE.ADD_GAS,
+        color: "#EB984E"
+    }
+}
+
+export const C3H7OH = {
+    id: "C3H7OH",
+    display: <span>C<sub>3</sub>H<sub>7</sub>OH</span>,
+    animation: {
+        type: EPISODE.ADD_GAS,
+        color: "#EB984E"
+    }
 }

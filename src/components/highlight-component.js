@@ -22,11 +22,13 @@ class HighLight extends Component {
 
     componentDidUpdate() {
 
-        const { do_reset_highlight } = this.props;
+        const { do_reset_highlight, reaction } = this.props;
 
         if (do_reset_highlight) {
             for (let i=0; i<this.stack.length; i++) this.stack[i] = null;
             this.myTimeLine.clear();
+            this.myTimeLine.set(this.highlight, { opacity: 0 });
+            this.myTimeLine.set(this.all, { top: 150 });
             this.myTimeLine.eventCallback("onComplete", null);
 
             this.props.clearStack();
@@ -46,10 +48,15 @@ class HighLight extends Component {
             }
 
             if (this.props.do_react) {
+                //this.myTimeLine.add(new TimelineMax().addPause(1));
                 this.myTimeLine
-                    .add(new TimelineMax().fromTo(this.stack_layer, 1, { css: { opacity: 1 } }, { css: { opacity: 0 } }))
-                    .add(new TimelineMax().to(this.highlight, 1, { css: { opacity: 1 } }))
-                    .eventCallback("onComplete", this.props.scrollTo, [MENU.DESCRIPTION])
+                    .add(new TimelineMax().addPause(1))
+                    .add(new TimelineMax().fromTo(this.stack_layer, 1.25, { css: { opacity: 1 } }, { css: { opacity: 0 } }))
+                    .add(new TimelineMax().to(this.highlight, 1.25, { css: { opacity: 1 } }))
+                    // .eventCallback("onComplete", this.props.scrollTo, [MENU.DESCRIPTION])
+
+                if (reaction.animation.flame)
+                    this.myTimeLine.add(new TimelineMax().to(this.all, 1, { top: 100 }))
             }
                     
             this.myTimeLine.play();
@@ -57,27 +64,31 @@ class HighLight extends Component {
     }
 
     render(){
-        const top = "35vh"
-        const right = "13vw"
-        const width = "35vw"
+        const color = '#F4D03F'
         return (
-            <div>
+            <div
+                ref={el => this.all = el}
+                style={{
+                    // background: '#777777',
+                    position: 'absolute',
+                    top: 150,
+                    width: '100%',
+                    // height: 50,
+                    textAlign: "center"
+                }}
+            >
                 <div 
                     style={{
-                        // background: '#777777',
                         position: 'absolute', 
-                        // zIndex: 1,   
-                        top: top, 
-                        right: right,
-                        textAlign: "center",
-                        width: width,
+                        zIndex: 101,   
+                        width: "100%",
                     }}
                 >
                     <div 
                         ref={el => {this.highlight = el}}
                         style={{
-                            fontSize: "1.8vw",
-                            color: '#FFE632',
+                            fontSize: 35,
+                            color: color,
                             opacity: 0
                         }}
                     >
@@ -87,26 +98,23 @@ class HighLight extends Component {
 
                 <div 
                     style={{
-                        // background: '#777777',
                         position: 'absolute', 
-                        zIndex: 2,   
-                        top: top, 
-                        right: right,
-                        textAlign: "center",
-                        width: width
+                        zIndex: 102,   
+                        width: "100%",
                     }}
                 >
                     <div 
                         ref={el => {this.stack_layer = el}}
                         style={{
                             fontSize: 40,
-                            color: '#FFE632'
+                            color: color,
                         }}
                     >
                         [ 
                         <span style={{ marginLeft: 10 }}>
                         {this.props.stack.map( (item, idx) => (
                                 <span 
+                                    key={idx}
                                     ref={el => {this.stack[idx] = el}}
                                     style={{ marginRight: 15 }}
                                 >

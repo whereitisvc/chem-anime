@@ -9,3 +9,7 @@ export const SET_DO_REACT = "SET_DO_REACT"
 export const SET_RESET_BEAKER = "SET_RESET_BEAKER"
 export const SET_RESET_HIGHLIGHT = "SET_RESET_HIGHLIGHT"
 export const CLEAR_REACT = "CLEAR_REACT"
+
+export const SET_CONTROLLER = "SET_CONTROLLER"
+export const SET_EXPAND = "SET_EXPAND"
+export const SHOW_DETAILS = "SHOW_DETAILS"

@@ -1,0 +1,48 @@
+
+.itemBtn {
+    position: relative;
+    display: inline-block;
+    text-align: "center";
+    margin-right: 25px;
+    opacity: .15;
+}
+
+.active {
+    opacity: 1;
+}
+
+.selected {
+    opacity: 1;
+}
+
+.itemBox {
+    /* background: red; */
+    position: relative;
+}
+
+.itemText {
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+}
+
+.item {
+    position: relative;
+    top: 10px;
+}
+
+.active.itemBtn:hover {
+    cursor: pointer;
+}
+
+.active.itemBtn:hover .item{
+    top: 0px;
+}
+
+.selected .itemBox {
+    /* background: red; */
+}
+
+.selected .item {
+    top: 0px;
+}
