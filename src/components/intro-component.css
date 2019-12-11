@@ -1,0 +1,38 @@
+
+.intro .canvas {
+    width: 850px;
+    height: 550px;
+    margin: auto;
+    /* background: yellow; */
+    position: relative;
+}
+
+.intro .canvas .beaker {
+    width: 280px;
+    height: 550px;
+    /* background: rgb(185, 141, 141); */
+    position: relative;
+    left: 285px;
+}
+
+.intro .beaker .stroke {
+    fill: none;
+    stroke: rgb(184, 184, 184);
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-opacity: 1;
+    stroke-width: 1px;
+
+    stroke-dasharray: 1000;
+    stroke-dashoffset: -600;
+    animation: dash 2s linear forwards;
+}
+
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+}
+
+
+

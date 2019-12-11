@@ -1,7 +1,22 @@
 
 .default {
-    fill: none;
+    /* fill: none; */
+    stroke: white;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-opacity: 1;
+    stroke-width: 3px;
+
+    stroke-dasharray: 1000;
+    stroke-dashoffset: -600;
+    animation: dash 3s linear forwards;
 }
+
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
 
 .forhover {
     fill: transparent;
@@ -25,6 +40,24 @@
     bottom: 150px;
     color: rgb(180, 180, 180);
     opacity: .5;
+
+    animation-name: bounceAlpha;
+    animation-duration:1.4s;
+    animation-delay:0.2s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
+@keyframes bounceAlpha {
+    0% {transform: translateX(0px) scale(1);}
+    25%{transform:translateX(10px) scale(1);}
+    26%{transform:translateX(-10px) scale(1);}
+    55% {transform: translateX(0px) scale(1);}
+
+    /* 0% {opacity: 1; transform: translateX(0px) scale(1);}
+  25%{opacity: 0; transform:translateX(10px) scale(0.9);}
+  26%{opacity: 0; transform:translateX(-10px) scale(0.9);}
+  55% {opacity: 1; transform: translateX(0px) scale(1);} */
 }
 
 .hide {

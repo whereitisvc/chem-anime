@@ -87,3 +87,32 @@
   80%  {transform: rotate(-2deg) scaleY(0.92);}
   100% {transform: rotate(1deg);}
 }
+
+
+
+
+
+
+.blue1{
+  left:5px;
+  width: 50px;
+  height: 50px;
+  background:rgb(0, 162, 255);
+  box-shadow: 0px 0px 5px 4px rgb(0, 162, 255);
+}
+
+.blue2{
+  left:10px;
+  width: 40px;
+  height: 40px;
+  background:rgb(105, 200, 255);
+  box-shadow: 0px 0px 5px 4px rgb(105, 200, 255);
+}
+
+.blue3{
+  left:15px;
+  width: 30px;
+  height: 30px;
+  background:rgb(172, 224, 255);
+  box-shadow: 0px 0px 5px 4px rgb(172, 224, 255);
+}

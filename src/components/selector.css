@@ -4,7 +4,8 @@
     display: inline-block;
     text-align: "center";
     margin-right: 25px;
-    opacity: .15;
+    opacity: .05;
+    transition: opacity 0.5s;
 }
 
 .active {
@@ -18,17 +19,19 @@
 .itemBox {
     /* background: red; */
     position: relative;
+    height: 80px;
 }
 
 .itemText {
-    margin-top: 20px;
+    margin-top: 10px;
     color: white;
     text-align: center;
 }
 
 .item {
     position: relative;
-    top: 10px;
+    top: 20px;
+    transition: top 0.3s;
 }
 
 .active.itemBtn:hover {

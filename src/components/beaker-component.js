@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { TimelineLite, TimelineMax, TweenLite, Expo, Power0 } from 'gsap'
+import { TimelineMax, Expo, Power0, Sine } from 'gsap'
 
 import { EPISODE } from '../namespace/mynamespace'
 import { resetBeaker, setReact, incStackIdx, showDetails, setExpand } from '../actions/action'
@@ -74,15 +74,14 @@ class Beaker extends Component {
                   {
                     y: 225,
                     opacity: 0,
-                    //ease: Expo.easeIn
                   })
   }
 
-  anima_solid() {
+  anima_add_solid() {
     if (!this.state.solid) return new TimelineMax();
     const height = this.all.offsetHeight;
     return new TimelineMax()
-                .fromTo(this.state.solid, 1.1, 
+                .fromTo(this.state.solid, 1.3, 
                   {
                     opacity: 1,
                     scale: 1,
@@ -98,35 +97,19 @@ class Beaker extends Component {
                   '-=.2');
   }
 
-  anima_liquid(clr) {
+  anima_add_liquid(clr) {
     if (!this.state.liquid) return new TimelineMax();
     return new TimelineMax()
-                .to(this.state.liquid, 2.5, 
+                .fromTo(this.state.liquid, 1.3, 
                   {
-                    css: {
-                      fill: clr ? clr : '#00FF1E',
-                      opacity: .9
-                    }
-                  });
-  }
-
-  anima_percipitate(clr) {
-    return new TimelineMax()
-                .set( this.state.percipitate, {css: { color: clr }} )
-                .staggerFromTo(this.state.percipitate, 1, 
+                    fill: "none",
+                    opacity: 0,
+                  },
                   {
-                      opacity: 0,
-                      scale: 0.25,
-                      y: 0,
+                    fill: clr,
+                    opacity: .7,
+                    ease: Sine.easeIn
                   }, 
-                  {
-                      opacity: 1,
-                      scale: 1,
-                      y: 77,
-                      ease: Power0.easeNone
-                  }, 
-                  .1, 
-                  0
                 );
   }
 
@@ -157,9 +140,41 @@ class Beaker extends Component {
                 );
   }
 
+  anima_liquid(clr) {
+    if (!this.state.liquid) return new TimelineMax();
+    return new TimelineMax()
+                .to(this.state.liquid, 2, 
+                  {
+                    css: {
+                      fill: clr ? clr : '#00FF1E',
+                      opacity: .7
+                    }
+                  });
+  }
+
+  anima_percipitate(clr) {
+    return new TimelineMax()
+                .set( this.state.percipitate, {css: { color: clr }} )
+                .staggerFromTo(this.state.percipitate, 1, 
+                  {
+                      opacity: 0,
+                      scale: 0.25,
+                      y: 0,
+                  }, 
+                  {
+                      opacity: 1,
+                      scale: 1,
+                      y: 77,
+                      ease: Power0.easeNone
+                  }, 
+                  .1, 
+                  0
+                );
+  }
+
   anima_flame(clr) {
     return new TimelineMax()
-                .fromTo(this.state.flame, .1,
+                .fromTo(this.state.flame, .01,
                   { opacity: 0 },
                   { opacity: 1 },
                   0);
@@ -171,9 +186,20 @@ class Beaker extends Component {
                   { opacity: 0 },
                   { opacity: 1 },
                 )
-                .fromTo(this.state.spark, .5,
+                .fromTo(this.state.match, 2,
+                  { css: { top: "70px" } },
+                  { css: { top: "192px" }},
+                  '+=1'
+                )
+                .fromTo(this.state.spark, 1,
                   { opacity: 0 },
                   { opacity: 1 },
+                  '-=4'
+                )
+                .fromTo(this.state.spark, 2,
+                  { css: { top: "85px" } },
+                  { css: { top: "207px" }},
+                  '-=2'
                 )
   }
 
@@ -215,13 +241,15 @@ class Beaker extends Component {
 
   componentDidUpdate(){
 
-    // console.log('hi', this.state);
+    // console.log('hi', this.props.navto_collect);
 
     const { stack, stack_idx, stack_element, do_react, do_reset_beaker, expand } = this.props;
 
     if (do_reset_beaker) {
       this.myTimeLine
           .clear()
+          .set(this.all, { rotation: "0_short"} )
+          .set(this.state.liquid, { css: { color: "#363636" } })
           .set(this.state.liquid, { opacity: 0 })
           .set(this.state.drop, { opacity: 0 })
           .set(this.state.solid, { opacity: 0 })
@@ -242,14 +270,15 @@ class Beaker extends Component {
             case EPISODE.ADD_SOLID:
                 this.myTimeLine
                     .set(this.state.solid, { css: { color: animation.color } })
-                    .add(this.anima_solid());
+                    .add(this.anima_add_solid());
                 break;
 
 
             case EPISODE.ADD_LIQUID:
                 if (stack_element.liquid < 2)
                     this.myTimeLine
-                      .add(new TimelineMax().to(this.state.liquid, 1, { fill: animation.color, opacity: .55 }));
+                        .add(this.anima_add_liquid(animation.color));
+                      //.add(new TimelineMax().to(this.state.liquid, 1.3, { fill: animation.color, opacity: .55 }));
                 else
                     this.myTimeLine
                       .set(this.state.drop, { fill: animation.color })
@@ -273,15 +302,12 @@ class Beaker extends Component {
         const { clr_chg, bubble, percipitate, flame, clr } = this.props.animation;
 
         // intro animation
-        if (flame) {
-          this.myTimeLine.add(new TimelineMax().addPause(1));
-          this.myTimeLine.add(this.anima_match());
-          this.myTimeLine.add(new TimelineMax().addPause(1));
+        if (!flame) {
+          this.myTimeLine.add(new TimelineMax().addPause(2));
+          this.myTimeLine.add(this.anima_shake());
         }
         else {
-          this.myTimeLine.add(new TimelineMax().addPause(1));
-          this.myTimeLine.add(this.anima_shake());
-          this.myTimeLine.add(new TimelineMax().addPause(1));
+          this.myTimeLine.add(this.anima_match(), "-=1.5");
         }
 
         // reaction animation
@@ -296,14 +322,14 @@ class Beaker extends Component {
         }
         if (flame) {
           this.myTimeLine.add(this.anima_flame(clr));
+          this.myTimeLine.add(new TimelineMax().addPause(1));
         }
-        // this.myTimeLine.eventCallback("onComplete", this.props.setExpand(true));
+        
         this.myTimeLine.addCallback(() => this.props.setExpand(true), "+=0.5");
         this.props.setReact(false);
       }
 
       if (expand && !this.state.expanded) {
-        // this.expanded = true;
         this.setState({ expanded: true });
         this.expTimeLine.add(new TimelineMax().to(this.all, 1, { 
                                       left: 0, 
@@ -313,9 +339,9 @@ class Beaker extends Component {
       }
   
       if (!expand && this.state.expanded) {
-        // this.expanded = false;
         this.setState({ expanded: false });
         this.expTimeLine.add(new TimelineMax().to(this.all, 1, { left: 285 }));
+        this.expTimeLine.eventCallback("onComplete", null);
       }
 
       this.myTimeLine.play();
@@ -349,19 +375,6 @@ class Beaker extends Component {
                 }}
               >
               <Base />
-              </div>
-
-              <div 
-                style={{
-                  position: 'absolute',
-                  zIndex: 500,
-                  bottom: 0,
-                  left: 0,
-                  width: "100%",
-                  height:"100%"
-                }}
-              >
-              <BaseHover expanded={this.state.expanded} />
               </div>
 
               <div 
@@ -513,7 +526,7 @@ const mapStateToProps = state => ({
   stack_element: state.beaker.stack_element,
   do_react: state.beaker.do_react,
   do_reset_beaker: state.beaker.do_reset_beaker,
-  expand: state.beaker.expand
+  expand: state.beaker.expand,
 })
 
 export default connect(

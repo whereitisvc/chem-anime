@@ -7,7 +7,6 @@ export const Fe = {
     animation: {
         type: EPISODE.ADD_SOLID,
         color: "gray",
-        txt: "white"
     }
 };
 export const H2SO4 = { 
@@ -15,8 +14,7 @@ export const H2SO4 = {
     display: <span>H<sub>2</sub>SO<sub>4</sub></span>,
     animation: {
         type: EPISODE.ADD_LIQUID,
-        color: "#FFBB32",
-        txt: "black"
+        color: "#F8C471",
     }
 };
 export const FeSO4 = { 
@@ -33,8 +31,7 @@ export const CuO = {
     display: <span>CuO</span>,
     animation: {
         type: EPISODE.ADD_SOLID,
-        color: "black",
-        txt: "white"
+        color: "#424949",
     }
 };
 export const CuSO4 = { 
@@ -47,8 +44,7 @@ export const CaCO3 = {
     display: <span>CaCO<sub>3</sub></span>,
     animation: {
         type: EPISODE.ADD_SOLID,
-        color: "white",
-        txt: "black"
+        color: "#CCD1D1",
     }
 };
 export const HCl = { 
@@ -56,8 +52,7 @@ export const HCl = {
     display: <span>HCl</span>,
     animation: {
         type: EPISODE.ADD_LIQUID,
-        color: "yellow",
-        txt: "black"
+        color: "#D3FF65",
     }
 };
 export const CaCl2 = { 
@@ -74,8 +69,7 @@ export const NaHCO3 = {
     display: <span>NaHCO<sub>3</sub></span>,
     animation: {
         type: EPISODE.ADD_SOLID,
-        color: "white",
-        txt: "black"
+        color: "#CCD1D1",
     }
 };
 export const HBr = { 
@@ -84,7 +78,6 @@ export const HBr = {
     animation: {
         type: EPISODE.ADD_LIQUID,
         color: "#8F6000",
-        txt: "white"
     }
 };
 export const NaBr = { 
@@ -97,7 +90,6 @@ export const PbNO32 = {
     animation: {
         type: EPISODE.ADD_LIQUID,
         color: "#EAEDED",
-        txt: "black"
     }
 }
 export const NaI = {
@@ -106,7 +98,6 @@ export const NaI = {
     animation: {
         type: EPISODE.ADD_LIQUID,
         color: "#EAEDED",
-        txt: "black"
     }
 }
 export const PbI2 = {
@@ -123,16 +114,14 @@ export const NaCl = {
     animation: {
         type: EPISODE.ADD_LIQUID,
         color: "#808B96",
-        txt: "black"
     }
 }
 export const AgNO3 = {
     id: "AgNO3",
-    display: <span>AgNO3</span>,
+    display: <span>AgNO<sub>3</sub></span>,
     animation: {
         type: EPISODE.ADD_LIQUID,
         color: "#808B96",
-        txt: "black"
     }
 }
 export const AgCl = {
@@ -169,7 +158,7 @@ export const Fe2O3 = {
     display: <span>Fe<sub>2</sub>O<sub>3</sub></span>,
     animation: {
         type: EPISODE.ADD_SOLID,
-        color: "#9C640C"
+        color: "#7D6608"
     }
 }
 

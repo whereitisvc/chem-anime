@@ -19,7 +19,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import Description from './description.component'
-import { selectReact, selectItem, setScroll, resetBeaker, resetHighlight, clearReact } from '../actions/action'
+import { selectReact, selectItem, resetBeaker, resetHighlight, clearReact } from '../actions/action'
 import { MENU, CONTROLLER, EPISODE } from '../namespace/mynamespace'
 import { clrchg_list, bubble_list, percipitate_list, heat_list } from '../data/reactions'
 import * as Items from '../data/items';
@@ -141,13 +141,11 @@ Sheet.defaultProps = {
 
 const mapStateToProps = state => ({
     stack: state.beaker.stack,
-    do_scroll: state.beaker.do_scroll,
-    scroll_to: state.beaker.scroll_to,
     reaction: state.beaker.reaction,
     controller: state.beaker.controller
 })
 
 export default connect(
   mapStateToProps,
-  { selectReact, selectItem, setScroll, resetBeaker, resetHighlight, clearReact }
+  { selectReact, selectItem, resetBeaker, resetHighlight, clearReact }
 )(Sheet);

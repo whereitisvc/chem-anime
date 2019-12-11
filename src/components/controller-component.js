@@ -8,10 +8,14 @@ import { CONTROLLER } from '../namespace/mynamespace'
 import { resetBeaker, resetHighlight, selectReact, clearReact, setController, setExpand, showDetails } from '../actions/action'
 
 import "./controller-component.css"
+import "../App.css"
 
 class Controller extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      focus: CONTROLLER.LIQUID
+    }
   }
 
   componentDidMount(){}
@@ -19,8 +23,11 @@ class Controller extends Component {
   componentDidUpdate(){}
 
   render(){
-    const btn_style_1 = { color: "#D5D8DC", background: "none", width: 80, textAlign: "center" }
-    const btn_style = { color: "#D5D8DC", background: "none"}
+    const { focus } = this.state;
+    let focus_bar = "focus-bar";
+    if (focus === CONTROLLER.SOLID) focus_bar += " solid";
+    else if (focus === CONTROLLER.LIQUID) focus_bar += " liquid";
+    else if (focus === CONTROLLER.GAS) focus_bar += " gas";
     return (
         <div 
             ref={el => {this.all = el}}
@@ -38,32 +45,59 @@ class Controller extends Component {
               <Button.Group inverted>
 
                 <div className="tab-box">
-                <Button className="mytab" style={btn_style_1} onClick={() => this.props.setController(CONTROLLER.SOLID)}> Solid </Button>
+                <div className={focus_bar}></div>
+                <Button 
+                    className="mytab"
+                    onClick={() => {
+                          this.props.setController(CONTROLLER.SOLID)
+                          this.setState({ focus: CONTROLLER.SOLID })
+                        }}
+                > 
+                  Solid 
+                </Button>
                 </div>
 
                 <div className="tab-box">
-                <Button className="mytab" style={btn_style_1} onClick={() => this.props.setController(CONTROLLER.LIQUID)}> Liquid </Button>
+                <Button 
+                    className="mytab"
+                    onClick={() => {
+                          this.props.setController(CONTROLLER.LIQUID)
+                          this.setState({ focus: CONTROLLER.LIQUID })
+                        }}
+                > 
+                  Liquid 
+                </Button>
                 </div>
                 
                 <div className="tab-box">
-                <Button className="mytab" style={btn_style_1} onClick={() => this.props.setController(CONTROLLER.GAS)}> Gas </Button>
+                <Button 
+                    className="mytab"
+                    onClick={() => {
+                          this.props.setController(CONTROLLER.GAS)
+                          this.setState({ focus: CONTROLLER.GAS })
+                        }}
+                > 
+                  Gas 
+                </Button>
                 </div>
               </Button.Group>
 
              
-                <Button.Group inverted>
-                <Button style={btn_style} icon='trash alternate' content='Clear' 
+                <Button.Group inverted className="control-group">
+                <Button className={this.props.expanding ? "control-btn disable" : "control-btn"} icon='trash alternate' content='Clear' 
                     onClick={() => {
+                        if (this.props.expanding) return;
                         this.props.resetBeaker(true);
                         this.props.resetHighlight(true);
-                        this.props.clearReact();
+                        setTimeout(() => this.props.clearReact(), 1000);
 
                         if (this.props.expand) this.props.showDetails(false);
                     }}
                 />
-                <Button style={btn_style} icon='undo' content='Replay'
+                <Button className={this.props.expanding ? "control-btn disable" : "control-btn"} icon='undo' content='Replay'
                     onClick={() => {
                         if (!this.props.reaction) return;
+                        if (this.props.expanding) return; 
                         this.props.resetBeaker(true);
                         this.props.resetHighlight(true);
 
@@ -74,15 +108,6 @@ class Controller extends Component {
                         }, 2700);
                     }}
                 />
-                {/* <Button style={btn_style} icon='add' content='Details' 
-                    onClick={() => {
-                      const { expand } = this.props;
-                      if (!expand)
-                        this.props.setExpand(true);
-                      else
-                        this.props.showDetails(false);
-                    }}
-                /> */}
               </Button.Group>
 
               
@@ -103,7 +128,8 @@ Controller.defaultProps = {
 const mapStateToProps = state => ({
     reaction: state.beaker.reaction,
     controller: state.beaker.controller,
-    expand: state.beaker.expand
+    expand: state.beaker.expand,
+    expanding: state.beaker.expanding
 })
 
 export default connect(

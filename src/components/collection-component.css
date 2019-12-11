@@ -1,0 +1,114 @@
+.area {
+    position: relative;
+    /* background: grey; */
+    width: 70vw;
+    height: 100vh;
+    margin: auto;
+    padding: auto;
+    padding-top: 45px;
+    text-align: center;
+}
+
+.sub-area {
+    margin-top: 35px;
+}
+
+.header {
+    font-size: 22px;
+    font-weight: 1000;
+    /* color: rgb(0, 190, 190); */
+    color: rgb(182, 182, 182);
+    margin-bottom: 15px
+}
+.header .count {
+    margin-left: 10px;
+    /* color: rgb(253, 164, 31); */
+    color: #F4D03F;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap'); */
+.area h1 {
+    /* font-family: 'Luckiest Guy', cursive; */
+    /* font-family: 'Staatliches', cursive; */
+    /* font-style: italic; */
+    font-size: 50px;
+    /* color: rgb(253, 164, 31); */
+    color: #F4D03F;
+}
+
+.accomplish_box .box {
+    display: inline-block;
+    width: 55px;
+    height: 50px;
+
+    position: relative;
+    overflow: hidden;
+
+    background: #2b2b2b;
+    padding-top: 15px;
+    text-align: left;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+
+    transition: width 1s;
+}
+
+
+.accomplish_box .box .accomplish {
+    /* background: goldenrod; */
+    position: absolute;
+    left: 4px;
+    width: 600px;
+    height: 50px;
+    
+    transition: left 1s;
+}
+
+.accomplish_box.open .box {
+    width: 400px;
+}
+
+.accomplish_box.open .box .accomplish{
+    left: -100px;
+}
+
+.accomplish_box.open .box:hover {
+    cursor: pointer;
+    transition: width 0.5s;
+    width: 450px;
+}
+
+
+
+
+
+.accomplish .slot {
+    display: inline-block;
+    width: 120px;
+    height: 70px;
+    position: relative;
+}
+.accomplish .slot .icon {
+    display: inline-block;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 0px;
+}
+.accomplish .slot .text {
+    /* background: pink; */
+    display: inline-block;
+    font-size: 16px;
+    height: 50px;
+    width: 70px;
+    position: relative;
+    top: -5px;
+    left: 0px;
+}
+
+
+

@@ -1,12 +1,49 @@
 .tab-box {
     position: relative;
 }
-.mytab{
+.tab-box .mytab{
     background: none;
     color: #D5D8DC;
-    width: 70px
+    width: 80px;
+    text-align: center;
 }
-.mytab:after {    
+.tab-box .mytab:hover {
+    background: none;
+    color: #D5D8DC;
+}
+.tab-box .mytab:focus {
+  background: none;
+  color: #D5D8DC;
+}
+
+.tab-box .focus-bar {
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  width: 80px;
+  height: 2px;
+  background: white;
+  transition: left 0.5s;
+  opacity: 0.5;
+}
+
+.tab-box .focus-bar.solid {
+  left: 0px;
+}
+.tab-box .focus-bar.liquid {
+  left: 80px;
+}
+.tab-box .focus-bar.gas {
+  left: 160px;
+}
+
+/* .tab-box .mytab.focus:after {
+  width: 100%;
+  left: 0;
+}
+
+
+.tab-box .mytab:after {    
   background: none repeat scroll 0 0 transparent;
   content: "";
   display: block;
@@ -17,8 +54,34 @@
   background: rgb(199, 199, 199);
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
-}
-.mytab:hover:after { 
+} */
+.tab-box .mytab:hover:after { 
   width: 100%; 
   left: 0; 
+}
+
+
+.control-group .control-btn {
+  background: none;
+  color: #D5D8DC;
+  transition: opacity 0.5s;
+}
+
+.control-group .control-btn.disable {
+  opacity: .4;
+}
+.control-group .control-btn.disable:hover {
+  cursor: not-allowed;
+}
+
+.control-group .control-btn:hover {
+  cursor: pointer;
+  background: none;
+  color: #D5D8DC;
+}
+
+.control-group .control-btn:focus {
+  /* cursor: pointer; */
+  background: none;
+  color: #D5D8DC;
 }

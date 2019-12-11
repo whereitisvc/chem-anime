@@ -1,0 +1,8 @@
+.stack-layer {
+    position: absolute; 
+    z-index: 102;   
+    width: 100%;
+    font-size: 40px;
+    color: rgb(189, 189, 189);
+    top: 160px;
+}

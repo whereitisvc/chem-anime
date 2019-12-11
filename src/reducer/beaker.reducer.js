@@ -1,4 +1,4 @@
-import { PUSH_ITEMS_STACK, CLEAR_ITEMS_STACK, SET_SCROLL, SCROLL_TO, SET_RESET_BEAKER, SET_DO_REACT, INC_STACK_IDX, SET_RESET_HIGHLIGHT, CLEAR_REACT, SET_CONTROLLER, SET_EXPAND, SHOW_DETAILS } from '../actions/type.action'
+import { PUSH_ITEMS_STACK, CLEAR_ITEMS_STACK, SET_RESET_BEAKER, SET_DO_REACT, INC_STACK_IDX, SET_RESET_HIGHLIGHT, CLEAR_REACT, SET_CONTROLLER, SET_EXPAND, SHOW_DETAILS, SET_UNLOCK_ALL, FINISHED } from '../actions/type.action'
 import { clrchg_list, bubble_list, percipitate_list, heat_list } from "../data/reactions"
 import { MENU, CONTROLLER, EPISODE } from "../namespace/mynamespace"
 
@@ -13,14 +13,21 @@ const initialState = {
     gas: 0
   },
   do_react: false,
-  do_scroll: false,
   do_reset_beaker: false,
   do_reset_highlight: false,
-  scroll_to: "",
+  finished: false,
 
   controller: CONTROLLER.LIQUID,
   show_details: false,
-  expand: false
+  expand: false,
+  expanding: false,
+
+  unlock: {
+    clrchg: 0,
+    bubble: 0,
+    percipitate: 0,
+    heat: 0
+  },
 };
 
 function _ary_equal(a, b) {
@@ -62,7 +69,16 @@ export default function(state = initialState, action) {
     case PUSH_ITEMS_STACK:
       let newstack = [...state.stack];
       newstack.push(action.payload);
+
       let react = checkStack(newstack);
+      let unlock = {...state.unlock};
+      if (react) {
+        let name = react.name;
+        if (name.substring(0,4) === "CLR_" && unlock.clrchg < 4) unlock.clrchg++;
+        else if (name.substring(0,7) === "BUBBLE_" && unlock.bubble < 4) unlock.bubble++;
+        else if (name.substring(0,5) === "PERP_" && unlock.percipitate < 4) unlock.percipitate++;
+        else if (name.substring(0,5) === "HEAT_" && unlock.heat < 4) unlock.heat++;
+      }
 
       let { type } = action.payload.animation;
       let stack_element = { ...state.stack_element };
@@ -81,7 +97,8 @@ export default function(state = initialState, action) {
         reaction: react ? react : null,
         animation: react ? react.animation : {},
         stack: newstack,
-        stack_element: stack_element
+        stack_element: stack_element,
+        unlock: unlock
       };
 
     case INC_STACK_IDX:
@@ -99,20 +116,8 @@ export default function(state = initialState, action) {
           solid: 0,
           liquid: 0,
           gas: 0
-        }
-      }
-
-    case SET_SCROLL:
-      return {
-        ...state,
-        do_scroll: action.payload
-      }
-    
-    case SCROLL_TO:
-      return {
-        ...state,
-        do_scroll: true,
-        scroll_to: action.payload
+        },
+        finished: false
       }
 
     case SET_DO_REACT:
@@ -136,7 +141,15 @@ export default function(state = initialState, action) {
     case CLEAR_REACT:
       return {
         ...state,
-        reaction: null
+        reaction: null,
+        finished: false
+      }
+
+    case FINISHED:
+      return {
+        ...state,
+        finished: true,
+        expanding: false
       }
 
     case SET_CONTROLLER:
@@ -148,13 +161,26 @@ export default function(state = initialState, action) {
     case SET_EXPAND:
       return {
         ...state,
-        expand: action.payload
+        expand: action.payload,
+        expanding: action.payload ? true : false,
       }
 
     case SHOW_DETAILS:
       return {
         ...state,
         show_details: action.payload
+      }
+
+    case SET_UNLOCK_ALL:
+      let val = action.payload ? 4 : 0;
+      return {
+        ...state,
+        unlock: {
+            clrchg: val,
+            bubble: val,
+            percipitate: val,
+            heat: val
+        }
       }
 
     default:

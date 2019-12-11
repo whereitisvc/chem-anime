@@ -1,10 +1,10 @@
-import { SET_HIGHLIGHT, SET_ANIMA_SETTING, PUSH_ITEMS_STACK, CLEAR_ITEMS_STACK, SET_SCROLL, SCROLL_TO, SET_RESET_BEAKER, SET_DO_REACT, INC_STACK_IDX, SET_RESET_HIGHLIGHT, CLEAR_REACT, SET_CONTROLLER, SET_EXPAND, SHOW_DETAILS } from "./type.action"
+import { PUSH_ITEMS_STACK, CLEAR_ITEMS_STACK, SET_RESET_BEAKER, SET_DO_REACT, INC_STACK_IDX, SET_RESET_HIGHLIGHT, CLEAR_REACT, SET_CONTROLLER, SET_EXPAND, SHOW_DETAILS, SET_UNLOCK_ALL, SET_COLLECT_REF, SET_MAIN_REF, NEW_REACT_FOUND, FINISHED } from "./type.action"
 
 export const selectReact = (react) => dispatch => {
     const { input, animation } = react;
     if (!input) return;
     let delay = 0;
-    let interval = animation.flame ? 2700 : 2700;
+    let interval = animation.flame ? 2900 : 2500;
     input.forEach(item => {
         setTimeout(() => {
             dispatch({
@@ -32,20 +32,6 @@ export const incStackIdx = () => dispatch => {
 export const clearStack = () => dispatch => {
     dispatch({
         type: CLEAR_ITEMS_STACK
-    })
-}
-
-export const setScroll = (active) => dispatch => {
-    dispatch({
-        type: SET_SCROLL,
-        payload: active
-    })
-}
-
-export const scrollTo = (place) => dispatch => {
-    dispatch({
-        type: SCROLL_TO,
-        payload: place
     })
 }
 
@@ -94,5 +80,40 @@ export const showDetails = (active) => dispatch => {
     dispatch({
         type: SHOW_DETAILS,
         payload: active
+    })
+}
+
+export const setUnlockAll = (active) => dispatch => {
+    dispatch({
+        type: SET_UNLOCK_ALL,
+        payload: active
+    })
+}
+
+
+export const setMainRef = (ref) => dispatch => {
+    dispatch({
+        type: SET_MAIN_REF,
+        payload: ref
+    })
+}
+
+export const setCollectRef = (ref) => dispatch => {
+    dispatch({
+        type: SET_COLLECT_REF,
+        payload: ref
+    })
+}
+
+export const newReactFound = (active) => dispatch => {
+    dispatch({
+        type: NEW_REACT_FOUND,
+        payload: active
+    })
+}
+
+export const reactFinish = () => dispatch => {
+    dispatch({
+        type: FINISHED
     })
 }

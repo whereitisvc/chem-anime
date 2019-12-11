@@ -12,17 +12,23 @@ class Flame extends Component {
   render(){
     return (
         <div 
-          class="container" 
+          className="container" 
           ref={el => this.flame = el} 
           style={{ 
             opacity: 0,
             // color: 'blue'
           }}
         >
-            <div class="red flame"></div>
-            <div class="orange flame"></div>
-            <div class="yellow flame"></div>
-            <div class="white flame" ></div>
+            <div className="red flame"></div>
+            <div className="orange flame"></div>
+            <div className="yellow flame"></div>
+
+            {/* <div className="blue1 flame"></div>
+            <div className="blue2 flame"></div>
+            <div className="blue3 flame"></div> */}
+
+
+            <div className="white flame" ></div>
 
             {/* <div class="blue circle" ></div> */}
             {/* <div class="black circle"></div> */}

@@ -4,11 +4,11 @@ import { connect } from "react-redux"
 
 import { Button, Header, Grid, Divider, Icon } from 'semantic-ui-react'
 
-// import 'react-perfect-scrollbar/dist/css/styles.css';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import Description from './description.component'
-import { selectReact, selectItem, setScroll } from '../actions/action'
+import { selectReact, selectItem } from '../actions/action'
 import { MENU, CONTROLLER, EPISODE } from '../namespace/mynamespace'
 import { clrchg_list, bubble_list, percipitate_list, heat_list } from '../data/reactions'
 import * as Items from '../data/items';
@@ -31,6 +31,7 @@ class Selector extends Component {
         this.menu = null;
         this.description = null;
         this.item2item = null;
+        this.current_tab = CONTROLLER.LIQUID;
 
         let table = new Map();
         solid_ary.forEach(item => table.set(item.id, 1));
@@ -70,6 +71,7 @@ class Selector extends Component {
 
         return (
             <div 
+                key={item.id}
                 className={btn_class}
                 onClick={() => this.itemonClick(item)}
                 style={{ color: item.animation.color }}
@@ -97,6 +99,14 @@ class Selector extends Component {
             default:
         }
         // if (ary.length < 10) return [...ary, ...ary].map((item, idx) => this.itemButton(item));
+        if (this.current_tab !== tab) {
+            this.scroll.scrollTo({
+                top: 0,
+                left: 1000,
+                behavior: 'smooth'
+              });
+            this.current_tab = tab;
+        }
         return ary.map((item, idx) => this.itemButton(item));
     }
 
@@ -123,6 +133,10 @@ class Selector extends Component {
         heat_list.forEach(reaction => mapInput(reaction.input));
 
         this.item2item = item2item;
+
+        setTimeout(() => {
+            this.scroll.scrollTo({ left: 1000, behavior: 'smooth' });
+        }, 4000);
     }
 
     componentDidUpdate() {
@@ -148,21 +162,20 @@ class Selector extends Component {
     }
 
     render(){
-        const react_font_size = 16;
         return (
             <PerfectScrollbar
                 containerRef={el => this.scroll = el}
                 style={{
                     // background: '#F6DDCC',
                     width: '80%',
-                    height: "15vh",
+                    height: "150px",
                     margin: 'auto',
                     marginTop: 20
                 }}
                 // suppressScrollY
             >
             {/* <div style={{ width: 2000, background: 'black', margin: 10 }}> test </div> */}
-            <div style={{ width: 2000, textAlign: "left" }}>
+            <div style={{ width: 2000, textAlign: "left", marginLeft: 1000 }}>
             { this.switchTab(this.props.controller) }
             </div>
             </PerfectScrollbar>
@@ -187,5 +200,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { selectReact, selectItem, setScroll }
+  { selectReact, selectItem }
 )(Selector);

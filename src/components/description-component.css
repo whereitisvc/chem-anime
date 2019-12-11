@@ -1,0 +1,60 @@
+.all {
+    position: absolute;
+    z-index: 10;
+    top: 238px;
+    right: 0px;
+    width: 530px;
+    opacity: 0;
+    /* background: green; */
+    height: 275px;
+}
+
+.all .reaction {
+    /* position: absolute;    */
+    width: 140%;
+    /* top: -60px; */
+    /* left: 0px; */
+    font-size: 35px;
+    color: #F4D03F;
+    text-align: left;
+    /* background: peru; */
+    line-height: 35px;
+    margin-bottom: 0px;
+}
+
+.list {
+    color: white;
+    font-size: 20px;
+    text-align: left;
+    width: 100%;
+    /* vertical-align: top; */
+    line-height: 25px;
+    margin-top: 0px;
+    position: relative;
+}
+
+.list .item {
+    height: 50px;
+    /* background: wheat; */
+    margin-bottom: 10px;
+}
+.list .item-short {
+    height: 30px;
+    /* background: wheat; */
+}
+
+.list .icon {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    width: 40px;
+    height: 100%;
+    /* background: pink; */
+}
+.list .text {
+    display: inline-block;
+    position: absolute;
+    left: 40px;
+    height: 100%;
+    /* background: greenyellow; */
+}

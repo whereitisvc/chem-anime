@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap');
+.nav .unlock {
+    position: absolute;
+    z-index: 100;
+    right: 70px;
+    top: 93vh;
+    /* color: rgb(216, 216, 216); */
+    color: #F4D03F;
+    opacity: 0;
+    /* background: green; */
+    font-size: 20px;
+    line-height: 35px;
+    /* font-family: 'Odibee Sans', cursive; */
+    font-style: italic;
+}
+
+.nav .nav-btn-1 {
+    position: absolute;
+    z-index: 100;
+    top: 93vh;
+    right: 15px;
+    /* background: rgb(73, 73, 73); */
+    color: black;
+    opacity: 0.4;
+}
+
+.nav .nav-shadow-1 {
+    position: absolute;
+    z-index: 99;
+    top: 93.5vh;
+    right: 23px;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background: rgb(255, 230, 0);
+    opacity: 0;
+}
+
+.nav .nav-btn-2 {
+    position: absolute;
+    z-index: 100;
+    top: 218vh;
+    right: 15px;
+    color: black;
+    opacity: 0.4;
+}

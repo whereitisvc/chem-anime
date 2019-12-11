@@ -4,9 +4,10 @@ import { connect } from "react-redux"
 
 import { TimelineLite, TimelineMax, TweenLite, Expo, Power0 } from 'gsap'
 
-import { Image, Button, Icon } from 'semantic-ui-react'
+import { Image, Button, Icon, List } from 'semantic-ui-react'
 
-import { setExpand, showDetails } from '../actions/action'
+import { setExpand, showDetails, reactFinish } from '../actions/action'
+import "./description-component.css"
 
 
 class Description extends Component {
@@ -18,12 +19,28 @@ class Description extends Component {
         this.show = false;
     }
 
+    showDescription() {
+        const { description } = this.props.reaction;
+        return (
+            <div>
+                {
+                    description.map((line, idx) => (
+                        <div key={idx} className="item">
+                            <Icon className="icon" name="angle right"/>
+                            <div className="text">{line}</div>
+                        </div>
+                    ))
+                }
+            </div>
+        )
+    }
+
     componentDidUpdate() {
         const { show_details } = this.props;
         if (show_details && !this.show) {
             this.show = true;
             this.myTimeLine.add(new TimelineMax().to(this.details, 1, { opacity: 1 }))
-            this.myTimeLine.eventCallback("onComplete", null);
+            this.myTimeLine.addCallback(() => this.props.reactFinish(), "+=0");
             this.myTimeLine.play();
         }
 
@@ -34,7 +51,6 @@ class Description extends Component {
                                             onComplete: this.props.setExpand,
                                             onCompleteParams: [false]
                                         }))
-            // this.myTimeLine.eventCallback("onComplete", this.props.setExpand, [false]);
             this.myTimeLine.play();
         }
     }
@@ -43,39 +59,18 @@ class Description extends Component {
         return (
             <div
                 ref={el => {this.details = el}}
-                style={{
-                    position: 'absolute',
-                    // zIndex: 0,
-                    top: 237,
-                    right: 0,
-                    width: 530,
-                    opacity: 0
-                }}
+                className="all"
             >
-                {/* Design the reaction introduction content here */}
-                {
-                    new Array(3).fill(0).map(el => (
-                        <div>
-                        <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                        <br/>
-                        </div>
-                    ))
-                }
 
-                <div
-                    style={{
-                        position: 'absolute',
-                        right: 0,
-                        top: 250
-                    }}
+                <div 
+                    ref={el => {this.highlight = el}}
+                    className="reaction"
                 >
-                    <Button  
-                        style={{ background: "none", color: "#D5D8DC" }} 
-                        icon='close'
-                        content='Close'
-                        onClick={() => this.props.showDetails(false)}
-                    >
-                    </Button>
+                    { this.props.reaction ? this.props.reaction.equation : "test + test -> test + test" }
+                </div>
+
+                <div className="list">
+                { this.props.reaction ? this.showDescription() : "" }
                 </div>
             </div>
         )
@@ -90,10 +85,11 @@ Description.defaultProps = {
 
 const mapStateToProps = state => ({
     highlight: state.beaker.highlight,
-    show_details: state.beaker.show_details
+    show_details: state.beaker.show_details,
+    reaction: state.beaker.reaction
 })
 
 export default connect(
   mapStateToProps,
-  { setExpand, showDetails }
+  { setExpand, showDetails, reactFinish }
 )(Description);

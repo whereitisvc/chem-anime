@@ -13,8 +13,13 @@ export const clrchg_list = [
             bubble: false,
             percipitate: false,
             flame: false,
-            clr: "#008000"
-        }
+            clr: "#28B463"
+        },
+        description: [
+            "Metal + Acid -> Salt + Hydrogen",
+            "An acid will react with a metal to form a salt and hydrogen gas.",
+            "In this case, metal iron is reacting with sulfuric acid to form iron sulfate and hydrogen. The solution is turning green."
+        ]
     },
     {
         idx: 1,
@@ -27,8 +32,13 @@ export const clrchg_list = [
             bubble: false,
             percipitate: false,
             flame: false,
-            clr: "blue"
-        }
+            clr: "#85C1E9"
+        },
+        description: [
+            "Metal Oxide + Acid -> Salt + Water",
+            "An acid will react with a metal to form a salt and water.",
+            "In this case, copper oxide is reacting with sulfuric acid to form copper sulfate and water. The solution is turning blue."
+        ]
     },
     {
         idx: 2,
@@ -41,22 +51,32 @@ export const clrchg_list = [
             bubble: false,
             percipitate: false,
             flame: false,
-            clr: "#F9E79F"
-        }
+            clr: "yellow"
+        },
+        description: [
+            "Metal Oxide + Acid -> Salt + Water",
+            "An acid will react with a metal to form a salt and water.",
+            "In this case, Iron (III) oxide is reacting with chloric acid to form iron sulfate and water. The solution is turning light yellow."
+        ]
     },
     {
         idx: 4,
         name: "CLR_4",
         equation: (<div>{Items.Fe2O3.display} + 3{Items.H2SO4.display} -> {Items.Fe2SO43.display} + 3{Items.H2O.display}</div>),
-        input: [Items.Fe2O3, Items.HCl],
-        output: [Items.FeCl3, Items.H2O],
+        input: [Items.Fe2O3, Items.H2SO4],
+        output: [Items.Fe2SO43, Items.H2O],
         animation: {
             clr_chg: true,
             bubble: false,
             percipitate: false,
             flame: false,
             clr: "#F9E79F"
-        }
+        },
+        description: [
+            "Metal Oxide + Acid -> Salt + Water",
+            "An acid will react with a metal to form a salt and water.",
+            "In this case, Iron (III) oxide is reacting with sulfuric acid to form iron sulfate and water. The solution is turning light yellow."
+        ]
     }
 ]
 
@@ -72,7 +92,12 @@ export const bubble_list = [
             bubble: true,
             percipitate: false,
             flame: false,
-        }
+        },
+        description: [
+            "Carbonate/Bicarbonate + Acid -> Salt + Carbon Dioxide + Water",
+            "An carbonate will react with an acid to form salt, carbon dioxide and water.",
+            "In this case, calcium carbonate is reacting with hydrochloric acid to form calcium chloride, carbon dioxide and water."
+        ]
     },
     {
         idx: 1,
@@ -86,7 +111,12 @@ export const bubble_list = [
             percipitate: false,
             flame: false,
             clr: "#EBDCBE"
-        }
+        },
+        description: [
+            "Carbonate/Bicarbonate + Acid -> Salt + Carbon Dioxide + Water",
+            "An bicarbonate will react with an acid to form salt, carbon dioxide and water.",
+            "In this case, sodium bicarbonate is reacting with hydrobromic acid to form sodium bromide, carbon dioxide and water."
+        ]
     },
     {
         idx: 2,
@@ -99,7 +129,12 @@ export const bubble_list = [
             bubble: true,
             percipitate: false,
             flame: false,
-        }
+        },
+        description: [
+            "Carbonate/Bicarbonate + Acid -> Salt + Carbon Dioxide + Water",
+            "An carbonate will react with an acid to form salt, carbon dioxide and water.",
+            "In this case, copper carbonate is reacting with nitric acid to form cupric nitrate, carbon dioxide and water."
+        ]
     },
     {
         idx: 3,
@@ -112,7 +147,12 @@ export const bubble_list = [
             bubble: true,
             percipitate: false,
             flame: false,
-        }
+        },
+        description: [
+            "Carbonate/Bicarbonate + Acid -> Salt + Carbon Dioxide + Water",
+            "An carbonate will react with an acid to form salt, carbon dioxide and water.",
+            "In this case, copper carbonate is reacting with chloric acid to form cupric chloride, carbon dioxide and water."
+        ]
     }
 ]
 
@@ -129,7 +169,10 @@ export const percipitate_list = [
             percipitate: true,
             flame: false,
             clr: "#B7950B"
-        }
+        },
+        description: [
+            "In this case, lead nitrate is reacting with soidum iodide to form lead iodide and sodium nitrate. The precipitate is lead iodide in a yellow solid form."
+        ]
     },
     {
         idx: 1,
@@ -143,7 +186,10 @@ export const percipitate_list = [
             percipitate: true,
             flame: false,
             clr: "#FBFCFC"
-        }
+        },
+        description: [
+            "In this case, sodium chloride is reacting with silver nitrate to form silver chloride and sodium nitrate. The precipitate silver chloride in a white crystalline form."
+        ]
     },
     {
         idx: 2,
@@ -157,7 +203,10 @@ export const percipitate_list = [
             percipitate: true,
             flame: false,
             clr: "#E5E7E9"
-        }
+        },
+        description: [
+            "In this case, cadium sulfate is reacting with potassium sulfide to form cadium sulfide and potassium sulfate. The precipitate is cadium sulfide in a yellow solid form."
+        ]
     },
     {
         idx: 3,
@@ -171,7 +220,10 @@ export const percipitate_list = [
             percipitate: true,
             flame: false,
             clr: "#E5E7E9"
-        }
+        },
+        description: [
+            "In this case, magnesium chloride is reacting with sodium hydroxide to form sodium chloride and magnesium hydroxide. The precipitate is sodium chloride in a white solid form."
+        ]
     },
 ]
 
@@ -187,8 +239,13 @@ export const heat_list = [
             bubble: false,
             percipitate: false,
             flame: true,
-            clr: "#5DADE2"
-        }
+            clr: "#F39C12"
+        },
+        description: [
+            "It’s a exothermic reaction",
+            "It’s a methane combustion reaction",
+            "The products of a combustion reaction are always energy, carbon dioxide and water."
+        ]
     },
     {
         idx: 1,
@@ -202,7 +259,12 @@ export const heat_list = [
             percipitate: false,
             flame: true,
             clr: "#F39C12"
-        }
+        },
+        description: [
+            "It’s a exothermic reaction",
+            "It’s a propane combustion reaction",
+            "The products of a combustion reaction are always energy, carbon dioxide and water."
+        ]
     },
     {
         idx: 2,
@@ -216,7 +278,12 @@ export const heat_list = [
             percipitate: false,
             flame: true,
             clr: "#F39C12"
-        }
+        },
+        description: [
+            "It’s a exothermic reaction",
+            "It’s a butane combustion reaction",
+            "The products of a combustion reaction are always energy, carbon dioxide and water."
+        ]
     },
     {
         idx: 3,
@@ -230,6 +297,11 @@ export const heat_list = [
             percipitate: false,
             flame: true,
             clr: "#F39C12"
-        }
+        },
+        description: [
+            "It’s a exothermic reaction",
+            "It’s a propanol combustion reaction",
+            "The products of a combustion reaction are always energy, carbon dioxide and water."
+        ]
     }
 ]
