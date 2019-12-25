@@ -27,11 +27,11 @@
 }
 
 .intro {
-  position: absolute;
+  position: relative;
   width: 60vw;
   height: 100vh;
   max-width: 850px;
-  margin-left: 20vw;
+  margin: auto;
   z-index: 0;
   /* background: grey; */
   opacity: 1;

@@ -136,7 +136,7 @@ class Selector extends Component {
 
         setTimeout(() => {
             this.scroll.scrollTo({ left: 1000, behavior: 'smooth' });
-        }, 4000);
+        }, 2200);
     }
 
     componentDidUpdate() {

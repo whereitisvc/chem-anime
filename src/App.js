@@ -35,7 +35,7 @@ class App extends Component {
 
     this.myTimeLine
                   .add( new TimelineMax().addPause(3) )
-                  .add( new TimelineMax().to(this.intro, 2, { opacity: 0 }) )
+                  // .add( new TimelineMax().to(this.intro, 2, { opacity: 0 }) )
                   .add( new TimelineMax().to(this.main, 2, { opacity: 1 }), "-=2")
                   .add( new TimelineMax().fromTo(this.navbtn, 2, { opacity: 0 }, { opacity: 1 }), "-=2")
                   .add( new TimelineMax().fromTo(this.logo, 1, { x: "45vw", opacity: 0 }, { x: 50, opacity: 1 }), "-=0.5" );
@@ -47,7 +47,7 @@ class App extends Component {
         <Provider store={store}>
 
           <div className="App">
-            <div className="intro" ref={el => this.intro = el}><Intro /></div>
+            {/* <div className="intro" ref={el => this.intro = el}><Intro /></div> */}
             <div className="logo" ref={el => this.logo = el}>ChemAnime</div>
             <div className="main" ref={el => this.main = el}>
               <Canvas />
