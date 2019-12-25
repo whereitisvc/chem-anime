@@ -42,7 +42,9 @@
   width: 60vw;
   height: 100vh;
   max-width: 850px;
-  margin-left: 20vw;
+  /* margin-left: 20vw; */
+  margin: auto;
+  padding-top: 5vh;
   opacity: 0;
 }
 

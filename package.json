@@ -1,6 +1,7 @@
 {
   "name": "gsap_ui",
   "version": "0.1.0",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.6.1",
