@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "./static/css/main.1f276f4c.chunk.css",
+    "main.js": "./static/js/main.09acc45e.chunk.js",
+    "main.js.map": "./static/js/main.09acc45e.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.e2a1ff1f.js",
+    "runtime-main.js.map": "./static/js/runtime-main.e2a1ff1f.js.map",
+    "static/css/2.a8506faf.chunk.css": "./static/css/2.a8506faf.chunk.css",
+    "static/js/2.ef033958.chunk.js": "./static/js/2.ef033958.chunk.js",
+    "static/js/2.ef033958.chunk.js.map": "./static/js/2.ef033958.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.5fb7be1ff1bf111b867a03ce18c85ec0.js": "./precache-manifest.5fb7be1ff1bf111b867a03ce18c85ec0.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.a8506faf.chunk.css.map": "./static/css/2.a8506faf.chunk.css.map",
+    "static/css/main.1f276f4c.chunk.css.map": "./static/css/main.1f276f4c.chunk.css.map",
+    "static/media/Curved_Arrow.svg": "./static/media/Curved_Arrow.a7932ae4.svg",
+    "static/media/semantic.min.css": "./static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e2a1ff1f.js",
+    "static/css/2.a8506faf.chunk.css",
+    "static/js/2.ef033958.chunk.js",
+    "static/css/main.1f276f4c.chunk.css",
+    "static/js/main.09acc45e.chunk.js"
+  ]
+}
